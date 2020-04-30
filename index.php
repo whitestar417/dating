@@ -1,3 +1,9 @@
+<!--
+    David Haas
+    4/29/20
+    https://dhaas417.greenriverdev.com/328/dating/
+    Pet dating website
+-->
 <?php
 
 //Turn on error reporting
