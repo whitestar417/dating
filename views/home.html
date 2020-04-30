@@ -1,13 +1,19 @@
+<!--
+    David Haas
+    4/29/20
+    https://dhaas417.greenriverdev.com/328/dating/
+    Pet dating website
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<header>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
     <title>Pet Partners</title>
 </header>
@@ -21,59 +27,49 @@
         </div>
     </nav>
 
-    <!--      -->
-    <div class="space-medium">
-        <div class="container col-6">
-            <div class="row">
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="feature-description">
-                        <h2>Pet Partner Perfection</h2>
-                        <p>Welcome to the best website in Washington for pets meeting
-                        other pets.  Our dogs find the perfect match and always leave
-                        as happy as can be!</p>
-                        <h4>Here's what some of the owners have to say -</h4>
-                        <hr>
-                        <!-- feature-left -->
-                        <div class="feature-center">
-                            <div class="feature-icon"><i class="far fa-address-book"></i></div>
-                            <div class="feature-content">
-                                <p>"My Ralphie found the poodle of his dreams!" - Andrea</p>
-                            </div>
+    <div class="container border">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-center">Pet Partner Perfection</h2>
+                <p>Welcome to the best website in Washington for pets meeting
+                other pets.  Our dogs find the perfect match and always leave
+                as happy as can be!</p>
+                <h4 class="text-center">Some owners said -</h4>
+                <hr>
+                <div class="col-2"></div>
+                <div class="col-12">
+                    <div class="feature-left">
+                        <div class="text-left">
+                            <p><em>"My Ralphie found the poodle of his dreams!"</em> - Andrea</p>
                         </div>
-                        <!-- /.feature-left -->
-                        <!-- feature-left -->
-                        <div class="feature-left">
-                            <div class="feature-icon"><i class="far fa-compass"></i></div>
-                            <div class="feature-content">
-                                <p>"Who's a good girl? My Princess is and she loves the
-                                    encounters she makes here." - John Smith</p>
-                            </div>
+                    </div>
+                    <div class="feature-left">
+                        <div class="text-left">
+                            <p><em>"Who's a good girl? My Princess is and she loves the
+                                encounters she makes here."</em> - John Smith</p>
                         </div>
-                        <!-- /.feature-left -->
-                        <!-- feature-left -->
-                        <div class="feature-left">
-                            <div class="feature-icon"><i class="far fa-question-circle"></i></div>
-                            <div class="feature-content">
-                                <p>"Just try it! Your pet will never be the same!" - Sarah</p>
-                            </div>
+                    </div>
+                    <div class="feature-left">
+                        <div class="text-left">
+                            <p><em>"Just try it! Your pet will never be the same!"</em> - Sarah</p>
                         </div>
-                        <hr>
                     </div>
                 </div>
+                <hr>
+                <!-- Submit button -->
+                <div class="text-center">
+                    <button class="btn btn-primary text-center" type="submit">Create a Profile!</button>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <img class="img-fluid rounded-lg" src="images/puppies.jpg" alt="puppies kissing">
             </div>
         </div>
     </div>
 
-    <div class="container col-6">
-        <figure>
-            <img class="img-fluid float-right rounded-lg" src="images/puppies.jpg" alt="puppies kissing">
-        </figure>
-    </div>
 
 
-
-    <!-- Submit button -->
-    <a class="btn btn-primary" id="create" role="button">Create a Profile!</a>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
