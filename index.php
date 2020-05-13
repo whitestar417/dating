@@ -17,10 +17,82 @@ require_once('vendor/autoload.php');
 $f3 = Base::instance();
 
 //Define a default route
-$f3->route('GET /', function () {
+$f3->route('GET /', function ($f3) {
+
     $view = new Template();
-    echo $view->render
-    ('views/home.html');
+    echo $view->render('views/home.html');
+});
+
+//Define a personal info route
+$f3->route('GET|POST /personal_info', function($f3)
+{
+    //Check if the form has been posted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        //Data is valid
+        $_SESSION['fName'] = $_POST['fName'];
+        $_SESSION['lName'] = $_POST['lName'];
+        $_SESSION['age'] = $_POST['age'];
+        $_SESSION['gender'] = $_POST['gender'];
+        $_SESSION['phone'] = $_POST['phone'];
+
+        //Redirect to the profile route
+        $f3->reroute("profile");
+    }
+
+    $view = new Template();
+    echo $view->render('views/personal_info.html');
+});
+
+//Define a profile route
+$f3->route('GET|POST /profile', function($f3)
+{
+    //Check if the form has been posted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        //Data is valid
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['seeking'] = $_POST['seeking'];
+        $_SESSION['biography'] = $_POST['biography'];
+
+        //Redirect to the interests route
+        $f3->reroute("interests");
+    }
+
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
+//Define an interests route
+$f3->route('GET|POST /interests', function($f3)
+{
+    $indoors = getIndoorInterests();
+    $outdoors = getOutdoorInterests();
+
+    //Check if the form has been posted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        //Data is valid
+        $_SESSION['indoors'] = $_POST['indoors'];
+        $_SESSION['outdoors'] = $_POST['outdoors'];
+
+        //Redirect to the summary route
+        $f3->reroute("summary");
+    }
+
+    $f3->set('indoors', $indoors);
+    $f3->set('outdoors', $outdoors);
+
+    $view = new Template();
+    echo $view->render('views/interests.html');
+});
+
+//Define a summary route
+$f3->route('GET /summary', function()
+{
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 //Run fat free
