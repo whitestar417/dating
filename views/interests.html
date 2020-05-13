@@ -14,36 +14,44 @@
     </div>
     </nav>
 
-    <div class="container">
+    <div class="container mt-5">
         <h1>Interests</h1>
+        <hr>
 
-        <form action="#" method="post" class="form-horizontal">
+        <div action="#" method="post">
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">In-door Interests</label>
+            <label><strong>In-door Interests</strong></label>
 
-                <div class=""col-sm-4">
+            <div class="row mb-3 px-3">
                 <repeat group="{{ @indoors }}" value="{{ @indoor }}">
-                    <input type="checkbox" name="indoors[]"
-                           id="{{ @indoor }}"
-                           value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</input><br>
+                    <div class="col-md-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ @indoor }}" id="{{ @indoor }}" name="indoors[]">
+                            <label class="form-check-label" for="{{ @indoor }}">{{ @indoor }}</label>
+                        </div>
+                    </div>
                 </repeat>
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Out-door Interests</label>
+            <label><strong>Out-door Interests</strong></label>
 
-                <div class=""col-sm-4">
+            <div class="row mb-3 px-3">
                 <repeat group="{{ @outdoors }}" value="{{ @outdoor }}">
-                    <input type="checkbox" name="indoors[]"
-                           id="{{ @outdoor }}"
-                           value="{{ @outdoor }}"> {{ ucfirst(@outdoor) }}</input><br>
+                    <div class="col-md-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ @outdoor }}" id="{{ @outdoor }}" name="outdoors[]">
+                            <label class="form-check-label" for="{{ @outdoor }}">{{ @outdoor }}</label>
+                        </div>
+                    </div>
                 </repeat>
             </div>
 
-            <div class="col-xs-3 ">
-                <input class="form-control btn btn-default"
-                       type="submit" value="Next >>">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Next ></button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
