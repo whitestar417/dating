@@ -17,7 +17,7 @@ require_once('vendor/autoload.php');
 $f3 = Base::instance();
 
 //Define a default route
-$f3->route('GET /', function ($f3) {
+$f3->route('GET /', function () {
 
     $view = new Template();
     echo $view->render('views/home.html');
@@ -47,6 +47,8 @@ $f3->route('GET|POST /personal_info', function($f3)
 //Define a profile route
 $f3->route('GET|POST /profile', function($f3)
 {
+    $states = getStates();
+
     //Check if the form has been posted
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
