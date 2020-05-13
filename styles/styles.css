@@ -1,9 +1,12 @@
 body {
-    background-color: lightgoldenrodyellow;
     margin: 10px 30px;
 }
 
 img {
     display: block;
     border-radius: 20px;
+}
+
+err {
+    color: darkred;
 }

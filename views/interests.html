@@ -1,18 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Order Form</title>
+    <title>Interests</title>
     <include href="includes/header.htm"></include>
 </head>
 
 <body>
-    <nav class="navbar bg-light navbar-light navbar-expand-sm"
-    <div class="container">
-        <div class="navbar-nav">
-            <p class="nav-item">My Pet Dating App</p>
-        </div>
-    </div>
-    </nav>
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="./">My Pet Dating App</a>
+</nav>
 
     <div class="container mt-5">
         <h1>Interests</h1>
@@ -20,7 +16,7 @@
 
         <div action="#" method="post">
 
-            <label><strong>In-door Interests</strong></label>
+            <label><strong>Indoor Interests</strong></label>
 
             <div class="row mb-3 px-3">
                 <repeat group="{{ @indoors }}" value="{{ @indoor }}">
@@ -33,7 +29,7 @@
                 </repeat>
             </div>
 
-            <label><strong>Out-door Interests</strong></label>
+            <label><strong>Outdoor Interests</strong></label>
 
             <div class="row mb-3 px-3">
                 <repeat group="{{ @outdoors }}" value="{{ @outdoor }}">
@@ -55,5 +51,8 @@
             </div>
         </form>
     </div>
+
+
+<include href="includes/footer.htm"></include>
 </body>
 </html>

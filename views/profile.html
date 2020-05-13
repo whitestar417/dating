@@ -1,18 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Order Form</title>
+    <title>Profile</title>
     <include href="includes/header.htm"></include>
 </head>
 
 <body>
-    <nav class="navbar bg-light navbar-light navbar-expand-sm"
-    <div class="container">
-        <div class="navbar-nav">
-            <p class="nav-item">My Pet Dating App</p>
-        </div>
-    </div>
-    </nav>
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="./">My Pet Dating App</a>
+</nav>
 
     <div class="container mt-5">
         <h1>Profile</h1>
@@ -20,7 +16,7 @@
 
         <form action="#" method="post">
             <div class="row">
-                <div class="col-md-6 mt-3">
+                <div class="col-6">
                     <!-- get profile information -->
                     <div class="form-group">
                         <label for="email"><strong>Email</strong></label>
@@ -32,11 +28,9 @@
 
                         <select class="custom-select mb-3" id="state" name="state">
                             <option>State</option>
-
-                            <repeat group="{{ @states }}" value="{{ @state }}">
-                                <option value="{{ @state }}">{{ @state }}</option>
-                            </repeat>
-
+                                <repeat group="{{ @states }}" value="{{ @state }}">
+                                    <option value="{{ @state }}"> {{ ucfirst(@state) }} </option>
+                                </repeat>
                         </select>
 
                         <label><strong>Seeking</strong></label><br>
@@ -48,24 +42,27 @@
                             <input class="form-check-input"  type="radio" name="seeking" id="female" value="female">
                             <label class="form-check-label" for="female">Female</label>
                         </div>
-
-                        <div class="col-md-6 mt-3">
-                            <div class="form-group">
-                                <label for="bio"><strong>Biography</strong></label>
-                                <textarea class="form-control" name="bio" id="bio" rows="8"></textarea>
-                            </div>
-                        </div>
-
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Next ></button>
-                        </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="bio"><strong>Biography</strong></label>
+                        <textarea class="form-control" name="bio" id="bio" rows="8"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Next ></button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
+<include href="includes/footer.htm"></include>
 </body>
 </html>

@@ -1,10 +1,10 @@
-<!--
+<?php
+/**
     David Haas
     4/29/20
     https://dhaas417.greenriverdev.com/328/dating/
     Pet dating website
--->
-<?php
+*/
 
 //Turn on error reporting
 ini_set('display_errors',1);
@@ -12,6 +12,7 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once ('model/data-layer.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -62,6 +63,7 @@ $f3->route('GET|POST /profile', function($f3)
         $f3->reroute("interests");
     }
 
+    $f3->set('states', $states);
     $view = new Template();
     echo $view->render('views/profile.html');
 });
@@ -91,7 +93,7 @@ $f3->route('GET|POST /interests', function($f3)
 });
 
 //Define a summary route
-$f3->route('GET /summary', function()
+$f3->route('GET /summary', function($f3)
 {
     $view = new Template();
     echo $view->render('views/summary.html');
