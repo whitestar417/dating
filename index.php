@@ -41,6 +41,8 @@ $f3->route('GET|POST /personal_info', function($f3)
         $f3->reroute("profile");
     }
 
+    $f3->set('fName', $_POST['fName']);
+
     $view = new Template();
     echo $view->render('views/personal_info.html');
 });
@@ -93,7 +95,7 @@ $f3->route('GET|POST /interests', function($f3)
 });
 
 //Define a summary route
-$f3->route('GET /summary', function($f3)
+$f3->route('GET /summary', function()
 {
     $view = new Template();
     echo $view->render('views/summary.html');

@@ -10,30 +10,33 @@
     <a class="navbar-brand" href="./">My Pet Dating App</a>
 </nav>
 
-<div class="container mt-5">
-    <div class="row px-md-5 mx-md-5">
-        <div class="col-md-6">
-            <ul class="list-group">
-                <li class="list-group-item">Name: {{ @fName @lName }}</li>
-                <li class="list-group-item">Gender: {{ @gender }}</li>
-                <li class="list-group-item">Age: {{ @age }}</li>
-                <li class="list-group-item">Phone: {{ @phone }}</li>
-                <li class="list-group-item">Email: {{ @email }}</li>
-                <li class="list-group-item">State: {{ @state }}</li>
-                <li class="list-group-item">Seeking: {{ @seeking }}</li>
-                <li class="list-group-item">Interests: {{ @interests}}</li>
-            </ul>
-        </div>
+<div class="row">
+    <div class="col-6">
+        <p class="card mb-0 ml-3 p-2">Name: {{ @fName }} </p>
+        <p class="card mb-0 ml-3 p-2">Age: </p>
+        <p class="card mb-0 ml-3 p-2">Gender: </p>
+        <p class="card mb-0 ml-3 p-2">Phone Number: </p>
+        <p class="card mb-0 ml-3 p-2">E-Mail: </p>
+        <p class="card mb-0 ml-3 p-2">State: </p>
+        <p class="card mb-0 ml-3 p-2">Seeking: </p>
+        <p class="card mb-0 ml-3 p-2">Interests: </p>
     </div>
 
-    <div class="row px-md-t mx-md-5">
-        <div class="col-md-6">
-            <img class="img-fluid rounded-lg" src="images/profile.png" alt="figure profile">
-            <h3>Biography</h3>
-            <p>{{ @bio }}</p>
+    <div class="col-md-6">
+        <img class="img-fluid rounded-lg" src="images/profile.png" alt="figure profile">
+        <h3>Biography</h3>
+        <p>{{ @bio }}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="text-center">
+            <br><button type="submit" class="btn btn-primary">Contact Me!</button>
         </div>
     </div>
 </div>
+
 
 
 <include href="includes/footer.htm"></include>
