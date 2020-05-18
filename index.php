@@ -14,6 +14,8 @@ error_reporting(E_ALL);
 require_once('vendor/autoload.php');
 require_once ('model/data-layer.php');
 
+session_start();
+
 //Create an instance of the Base class
 $f3 = Base::instance();
 
