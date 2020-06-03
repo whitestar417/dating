@@ -10,11 +10,13 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
+session_start();
+//var_dump($_SESSION);
+
 //Require the autoload file
 require_once('vendor/autoload.php');
 require_once ('model/data-layer.php');
-
-session_start();
+require_once ('model/validation-functions.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -32,18 +34,47 @@ $f3->route('GET|POST /personal_info', function($f3)
     //Check if the form has been posted
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        //Data is valid
-        $_SESSION['fName'] = $_POST['fName'];
-        $_SESSION['lName'] = $_POST['lName'];
-        $_SESSION['age'] = $_POST['age'];
         $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phone'] = $_POST['phone'];
 
-        //Redirect to the profile route
-        $f3->reroute("profile");
+        if (validName($_POST['fName'], $_POST['lName']))
+        {
+            $_SESSION['fName'] = $_POST['fName'];
+            $_SESSION['lName'] = $_POST['lName'];
+        }
+        else
+        {
+            //Data is invalid
+            $f3->set("errors['name']", "Please enter a valid name.");
+        }
+
+        if (validAge($_POST['age']))
+        {
+            $_SESSION['age'] = $_POST['age'];
+        }
+        else
+        {
+            //Data is invalid
+            $f3->set("errors['age']", "Please enter a valid age.");
+        }
+
+        if (validPhone($_POST['phone']))
+        {
+            $_SESSION['phone'] = $_POST['phone'];
+        }
+        else
+        {
+            //Data is invalid
+            $f3->set("errors['phone']", "Please enter a valid phone number.");
+        }
+
+        if (empty($f3['errors'])) {
+
+            //Redirect to the profile route
+            $f3->reroute("profile");
+        }
     }
 
-    $f3->set('fName', $_POST['fName']);
+    $f3->set('genders', getGenders());
 
     $view = new Template();
     echo $view->render('views/personal_info.html');
@@ -57,16 +88,26 @@ $f3->route('GET|POST /profile', function($f3)
     //Check if the form has been posted
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        //Data is valid
-        $_SESSION['email'] = $_POST['email'];
         $_SESSION['state'] = $_POST['state'];
         $_SESSION['seeking'] = $_POST['seeking'];
-        $_SESSION['biography'] = $_POST['biography'];
+        $_SESSION['bio'] = $_POST['bio'];
 
-        //Redirect to the interests route
-        $f3->reroute("interests");
+        if (validEmail($_POST['email']))
+        {
+            //Data is valid
+            $_SESSION['email'] = $_POST['email'];
+
+            //Redirect to the interests route
+            $f3->reroute("interests");
+        }
+        else
+        {
+            //Data is invalid
+            $f3->set("errors['email']", "Please enter a valid email address.");
+        }
     }
 
+    $f3->set('genders', getGenders());
     $f3->set('states', $states);
     $view = new Template();
     echo $view->render('views/profile.html');
@@ -81,12 +122,30 @@ $f3->route('GET|POST /interests', function($f3)
     //Check if the form has been posted
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        //Data is valid
-        $_SESSION['indoors'] = $_POST['indoors'];
-        $_SESSION['outdoors'] = $_POST['outdoors'];
+        if (validIndoor($_POST['indoors']))
+        {
+            $_SESSION['indoors'] = $_POST['indoors'];
+        }
+        else
+        {
+            //Data is invalid
+            $f3->set("errors['indoors']", "Please do not spoof me.");
+        }
 
-        //Redirect to the summary route
-        $f3->reroute("summary");
+        if (validOutdoor($_POST['outdoors']))
+        {
+            $_SESSION['outdoors'] = $_POST['outdoors'];
+        }
+        else
+        {
+            //Data is invalid
+            $f3->set("errors['outdoors']", "Please do not spoof me.");
+        }
+
+        if (empty($f3['errors'])) {
+            //Redirect to the profile route
+            $f3->reroute("summary");
+        }
     }
 
     $f3->set('indoors', $indoors);

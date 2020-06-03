@@ -34,3 +34,9 @@ function getStates()
         "Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming");
     return $states;
 }
+
+function getGenders()
+{
+    $genders = array("male", "female");
+    return $genders;
+}
